@@ -7,6 +7,6 @@ output "instance_id" {
 }
 
 output "subnet_id" {
-  value = aws_subnet.na.id
+  value = aws_subnet.na[*].id
   
 }
