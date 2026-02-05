@@ -10,12 +10,12 @@ variable "instance_type" {
   
 }
 variable "subnet_cidr" {
-  type        = string
+  type        = list(string)
   description = "CIDR block for subnet"
 }
 
 variable "subnet_az" {
-  type        = string
+  type        = list(string)
   description = "Availability zone for subnet"
 }
 
