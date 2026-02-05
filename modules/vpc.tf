@@ -6,22 +6,13 @@ resource "aws_vpc" "ui" {
 
 }
 resource "aws_subnet" "na" {
+count = length(var.subnet_cidr)
     vpc_id     = aws_vpc.ui.id
-    cidr_block = var.subnet_cidr
-    availability_zone = var.subnet_az
+    cidr_block = var.subnet_cidr[count.index]
+    availability_zone = var.subnet_az[count.index]
 
     tags = {
         Name = "ExamSubnet"
-    }
-}
-
-resource "aws_subnet" "ux" {
-    vpc_id     = aws_vpc.ui.id
-    cidr_block = "12.0.2.0/24"
-    availability_zone = "us-east-1b"
-
-    tags = {
-        Name = "ExamSubnetUX"
     }
 }
 resource "aws_route" "route" {
